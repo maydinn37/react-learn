@@ -3,6 +3,9 @@ import styles from "./App.module.css";
 import Test from "./test.js";
 import { Title } from "./component.js";
 import Bootstrap from "./bootstrap.js";
+import Btn from "./components/Btn.js";
+import "./components/tailwind.css";
+
 const Todos = ["todo1", "todo2", "todo3"];
 
 function App() {
@@ -54,6 +57,8 @@ function App() {
           ))}
         </ul>
       </main>
+      <Title theme="dark">5.Ders</Title>
+      <Btn text="merhaba" />
     </div>
   );
 }
