@@ -77,13 +77,15 @@ function App() {
         </Tab>
       </div>
       <Title theme="dark">6.Ders</Title>
-      <TestComponent />
-      <button
-        className="btn btn-danger m-4"
-        onClick={() => setShow((show) => !show)}
-      >
-        {show ? "Gizle" : "Göster"}
-      </button>
+      <div className="bg-gray-400 d-flex flex-col justify-content-center">
+        <button
+          className="btn btn-danger mt-4 "
+          onClick={() => setShow((show) => !show)}
+        >
+          {show ? "Gizle" : "Göster"}
+        </button>
+        {show && <TestComponent />}
+      </div>
     </div>
   );
 }
