@@ -5,11 +5,15 @@ import { Title } from "./component.js";
 import Bootstrap from "./bootstrap.js";
 import Btn from "./components/Btn.js";
 import "./components/tailwind.css";
+import Tab from "./components/Tab.js";
+import { useState } from "react";
+import TestComponent from "./components/TestComponent.js";
 
 const Todos = ["todo1", "todo2", "todo3"];
 
 function App() {
-  console.log(styles);
+  const [activeTab, setActiveTab] = useState(1);
+  const [show, setShow] = useState(false);
 
   return (
     <div className={styles.App}>
@@ -17,7 +21,6 @@ function App() {
       <Title theme="dark">{process.env.NODE_ENV}</Title>
       <p>{process.env.REACT_APP_API_URL}</p>
       <Test className="App" />
-
       {process.env.NODE_ENV === "production" && (
         <>
           <img src="../logo192.png" />
@@ -39,6 +42,7 @@ function App() {
             paddingBottom: "10px",
             paddingTop: "10px",
             textAlign: "center",
+            fontSize: "30px",
           }}
         >
           MydınDevelop
@@ -58,7 +62,28 @@ function App() {
         </ul>
       </main>
       <Title theme="dark">5.Ders</Title>
-      <Btn text="merhaba" />
+      <Btn>Buton Örneği</Btn>
+      <Btn variant="Primary">Buton Örneği</Btn>
+      <Btn variant="Danger">Buton Örneği</Btn>
+      <Btn variant="Warning">Buton Örneği</Btn>
+      <div style={{ padding: 20 }}>
+        <button onClick={() => setActiveTab(0)} className="btn btn-danger">
+          Aktif Tab'ı değiştir
+        </button>
+        <Tab activeTab={activeTab} setActiveTab={setActiveTab}>
+          <Tab.Panel title="Profil">Profil Menüsü</Tab.Panel>
+          <Tab.Panel title="Hakkında">Hakkında Menüsü</Tab.Panel>
+          <Tab.Panel title="Ayarlar">Ayarlar Menüsü</Tab.Panel>
+        </Tab>
+      </div>
+      <Title theme="dark">6.Ders</Title>
+      <TestComponent />
+      <button
+        className="btn btn-danger m-4"
+        onClick={() => setShow((show) => !show)}
+      >
+        {show ? "Gizle" : "Göster"}
+      </button>
     </div>
   );
 }
